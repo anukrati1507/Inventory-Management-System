@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Employee table</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/static/css/page1.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+</head>
+      <body>
+<div class="jumbotron jumbotron-fluid">
+
+<div class="container-fluid">
+
+
+    <br>
+    <br>
+
+    <div align="center">
+    <h1 class="display-4">User Table</h1>
+    </div>
+        <hr class="my-4">
+    <br>
+    <br>
+    <br>
+
+    <div align="center">
+    <table class="table table-borderless table-dark table-hover" border="2" cellpadding="20">
+        <tr>
+            <th scope="col">
+                User_Id
+            </th>
+            <th scope="col">
+                User_Name
+            </th>
+            <th scope="col">
+                User_Mobile
+            </th>
+            <th scope="col">
+                Email
+            </th>
+            <th scope="col">
+                Date of Birth
+            </th>
+            <th scope="col">
+                Sex
+            </th>
+            <th scope="col">
+                Address
+            </th>
+
+        </tr>
+        {% for i, j in table.items %}
+         <tr align="center">
+            <th scope="row">{{i}}</th>
+             <td>{{j.user_name}}</td>
+             <td>{{j.user_mobile}}</td>
+             <td>{{j.user_email}}</td>
+             <td>{{j.dob}}</td>
+             <td>{{j.sex}}</td>
+             <td>{{j.user_address}}</td>
+             <td><form action="/employeeTable/" method="post">
+                 <input type="hidden" name="primary_key" value={{i}} >
+                 <button class="btn btn-danger" value="submit">Delete</button>
+             </form></td>
+         </tr>
+        {%endfor%}
+    </table>
+    <a class="btn btn-primary" href="/adminPage/" role="button">Back</a>
+            <a class="btn btn-primary" href="/employee/" role="button">Add</a>
+
+        <p>
+            <div style="color: red">
+        {{context.messages1}}
+        {{context.messages2}}
+        {{context.messages3}}
+        </div>
+        </p>
+    </div>
+    </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>Sales Table Updater</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/page1.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+</head>
+    <body>
+
+      <style media="screen">
+        .jumbotron{
+          text-align: center;
+        }
+        input{
+          border-radius: 10px;
+          border-style: solid;
+          border-color: silver;
+          border-width: 1px;
+
+        }
+        .btn{
+          border-radius: 10px;
+        }
+      </style>
+      <div class="jumbotron">
+          <div align="center">
+    <h1 class="display-4">Sales</h1>
+    </div>
+    <form action="/sample3/" method="POST">
+        {% csrf_token %}
+
+<hr class="my-4">
+      <br>
+        <label class="lead">Sale Id</label>             <input type="text" required name="Sales_id"><br><br>
+<!--        <label class="lead">Type </label>                      <input type="text" required name="type"><br><br>-->
+        <label class="lead">Item Id </label>                   <input type="text" required name="item_id"><br><br>
+        <label class="lead">Sales Customer Id</label>    <input type="text" required name="pur_cus_id"><br><br>
+        <label class="lead">Sales Amount </label>         <input type="text" required name="pur_amt"><br><br>
+        <label class="lead">Sales Date</label>           <input type="text" required name="pur_date"><br><br>
+<!--        <label class="lead">Bill Produced </label>             <input type="text" required name="bill"><br><br>-->
+        <button class="btn btn-primary" type="submit" value="submit">Submit</button><br><br>
+        <a class="btn btn-primary" href="/" role="button">Sign Out</a>
+<!--        <a class="btn btn-info" href="/sample?type=S" role="button">View</a>-->
+
+    </form>
+           <p>
+            <div style="color:red">
+        {{context.messages1}}
+          {{context.messages2}}
+          {{context.messages3}}
+                 </div>
+        </p>
+    </div>
+    <table class="table table-borderless table-dark table-hover" border="2" cellpadding="20">
+        <tr>
+            <th scope="col">
+                Transaction_Id
+            </th>
+            <th scope="col">
+                Type
+            </th>
+            <th scope="col">
+                Item_Id
+            </th>
+            <th scope="col">
+                Transaction_Customer_Id
+            </th>
+            <th scope="col">
+                Transaction_Amount
+            </th>
+            <th scope="col">
+                Transaction_Date
+            </th>
+            <th scope="col">
+                Bill_Produced
+            </th>
+            <th scope="col">
+                Change
+            </th>
+
+        </tr>
+        {% for i, j in table.items %}
+         <tr align="center">
+            <th scope="row">{{i}}</th>
+             <td>{{j.type}}</td>
+             <td>{{j.item_id_id}}</td>
+             <td>{{j.transaction_cus_id}}</td>
+             <td>{{j.transaction_amt}}</td>
+             <td>{{j.transaction_date}}</td>
+             <td>{{j.bill_produced}}</td>
+
+         </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>
